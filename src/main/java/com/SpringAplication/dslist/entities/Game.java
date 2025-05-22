@@ -15,35 +15,37 @@ public class Game {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ID;
+	private Long id;
 	private String titulo;
-	
-	@Column(name = "game_name")
 	private Integer ano;
 	private String genero;
 	private String plataformas;
 	private Double score;
 	private String imgUrl;
-	private String shorDescription;
+	
+	@Column(columnDefinition = "TEXT")
+	private String shortDescription;
+	
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
-	public Game(Long iD, String titulo,Integer ano, String genero, String plataformas, Double score, String imgUrl,
+	public Game(Long id, String titulo,Integer ano, String genero, String plataformas, Double score, String imgUrl,
 			String shorDescription, String longDescription) {
-		ID = iD;
+		this.id = id;
 		this.titulo = titulo;
 		this.genero = genero;
 		this.ano = ano;
 		this.plataformas = plataformas;
 		this.score = score;
 		this.imgUrl = imgUrl;
-		this.shorDescription = shorDescription;
+		this.shortDescription = shorDescription;
 		this.longDescription = longDescription;
 	}
 	public Long getID() {
-		return ID;
+		return id;
 	}
 	public void setID(Long iD) {
-		ID = iD;
+		id = iD;
 	}
 	public String getTitulo() {
 		return titulo;
@@ -82,10 +84,10 @@ public class Game {
 		this.imgUrl = imgUrl;
 	}
 	public String getShorDescription() {
-		return shorDescription;
+		return shortDescription;
 	}
 	public void setShorDescription(String shorDescription) {
-		this.shorDescription = shorDescription;
+		this.shortDescription = shorDescription;
 	}
 	public String getLongDescription() {
 		return longDescription;
@@ -96,7 +98,7 @@ public class Game {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(ID);
+		return Objects.hash(id);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -107,7 +109,7 @@ public class Game {
 		if (getClass() != obj.getClass())
 			return false;
 		Game other = (Game) obj;
-		return Objects.equals(ID, other.ID);
+		return Objects.equals(id, other.id);
 	}
 	
 	
